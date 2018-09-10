@@ -4,8 +4,10 @@ export class MainService {
         'ngInject';
         this.localStorageService = localStorageService;
         this.list = [];
-
-        // this.localStorageService.remove('list');
+        console.log('click maybe');
+        /* If you are reading this: congratulations, you know how to open dev tools:)
+            Some intended bugs in code have their own id. Add those ids to corresponding test cases to gain additional karma
+         */
         let fromStorage = this.localStorageService.get('list');
         if (fromStorage) {
             this.list = fromStorage;
@@ -13,6 +15,7 @@ export class MainService {
         let countFromStorage = this.localStorageService.get('count');
         if (countFromStorage) {
             this.countCompleted = countFromStorage;
+            // ID:counterBugOne
             if (this.countCompleted > 1) {
                 this.countCompleted--;
             }
@@ -27,6 +30,7 @@ export class MainService {
 
     addItem(item) {
         item.id = this.list.length + 1;
+        // ID:lengthBug
         if (this.list.length < 7) {
             this.list.push(item);
             this.localStorageService.remove('list');
@@ -47,10 +51,15 @@ export class MainService {
 
     completeItem(item) {
         this.countCompleted++;
+        // ID:counterBugTwo
+        let randomizer = Math.floor(Math.random() * 5) + 1;
+        if (randomizer==3){
+            console.log('bug:)');
+            this.countCompleted++;
+        }
         this.removeItem(item);
         this.localStorageService.remove('count');
         this.localStorageService.set('count', this.countCompleted);
-        console.log(this.countCompleted);
     }
 
     clearAll() {
