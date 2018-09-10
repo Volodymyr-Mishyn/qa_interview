@@ -1,6 +1,7 @@
 ### QA Interview application (TODO App) requirements
 
 Application should have following functionality:
+
     1. Ability to add todo elements in list
 
     2. Maximum amount of elements limited to 10
