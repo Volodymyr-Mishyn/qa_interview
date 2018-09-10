@@ -1,9 +1,10 @@
 
-export function config($logProvider, $mdDateLocaleProvider, $mdThemingProvider) {
+export function config($logProvider, $mdDateLocaleProvider, $mdThemingProvider, localStorageServiceProvider) {
     'ngInject';
     // Enable log
     $logProvider.debugEnabled(true);
-    
+    localStorageServiceProvider.setPrefix('qa-1');
+
     $mdThemingProvider.definePalette('orangePalette', {
         '50': '#d98f29',
         '100': '#dd9a3f',
