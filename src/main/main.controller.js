@@ -7,22 +7,30 @@ export class MainController {
         this.list = this.MainService.getList();
     }
 
-    removeAll(){
+    removeAll() {
+        this.list = [];
         this.MainService.clearAll();
+        this.list = this.MainService.getList();
     }
 
-    addItem(){
-        let text ='';
-        if (this.text.length>60){
-            text = this.text.substring(0,59);
+    addItem() {
+        let text = '';
+        if (this.text.length > 60) {
+            text = this.text.substring(0, 59);
+        } else {
+            text = this.text;
         }
-        let item= {title:this.title,text: this.text};
+        let item = {title: this.title, text: text};
         this.MainService.addItem(item);
-        this.title='';
-        this.text ='   ';
+        this.title = '';
+        this.text = '   ';
     }
 
-    removeItem(item){
+    removeItem(item) {
         this.MainService.removeItem(item);
+    }
+
+    completeItem(item) {
+        this.MainService.completeItem(item);
     }
 }
