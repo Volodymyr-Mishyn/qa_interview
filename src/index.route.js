@@ -1,7 +1,7 @@
 export function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     'ngInject';
-    $locationProvider.hashPrefix(''); // by default '!'
-    $locationProvider.html5Mode({enabled: true, requireBase: false});
+    //$locationProvider.hashPrefix(''); // by default '!'
+    //$locationProvider.html5Mode({enabled: true, requireBase: false});
     $stateProvider
         .state('search', {
             url: '/',
@@ -9,5 +9,11 @@ export function routerConfig($stateProvider, $urlRouterProvider, $locationProvid
             controller: 'MainController',
             controllerAs: 'main'
         });
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise(($injector, $location) => {
+        console.log('route:)');
+        let mainService = $injector.get('MainService');
+        // ID:counterBugRoute
+        mainService.countCompleted+=2;
+        return $location.path('/');
+    });
 }
