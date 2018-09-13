@@ -19,7 +19,7 @@ let createWebpackConfiguration = () => {
         publicPath: '/',
         // Filename for entry points
         // Only adds hash in build mode
-        filename: 'scripts/[name].bundle.js',
+        filename: '[name].bundle.js',
         // Filename for non-entry points
         // Only adds hash in build mode
         chunkFilename: '[name].bundle.js'
