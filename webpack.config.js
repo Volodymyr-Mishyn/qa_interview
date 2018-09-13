@@ -105,6 +105,11 @@ let createWebpackConfiguration = () => {
     ]);
     config.plugins.push(copyAssets);
 
+    config.optimization= {
+        // We no not want to minimize our code.
+        minimize: false,
+    };
+
     config.devServer = {
         overlay: true,
         // hot: true,
