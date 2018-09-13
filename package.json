@@ -7,7 +7,8 @@
     "test": "karma start",
     "dev-main": "webpack-dev-server --mode development --public localhost:8011 --open",
     "dev": "npm rebuild node-sass  && webpack-dev-server --mode development --public localhost:8011 --open",
-    "build": "rimraf dist && webpack -p"
+    "build": "rimraf dist && webpack -p",
+    "gp": "rimraf docs && webpack -p"
   },
   "author": "Vladimir Mishyn",
   "license": "ISC",
