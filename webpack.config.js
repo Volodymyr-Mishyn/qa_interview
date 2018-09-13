@@ -13,7 +13,7 @@ let createWebpackConfiguration = () => {
     config.entry = './src/index.module.js';
 
     config.output = {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'),
         // Output path from the view of the page
         // Uses webpack-dev-server in development
         publicPath: '/',
