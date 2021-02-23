@@ -9,13 +9,13 @@ const createWebpackConfiguration = () => {
     config.entry = './src/app/index.module.js';
 
     config.output = {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'),
         // Output path from the view of the page
         // Uses webpack-dev-server in development
         publicPath: '/',
         // Filename for entry points
         // Only adds hash in build mode
-        filename: 'scripts/[name].bundle.js',
+        filename: '[name].bundle.js',
         // Filename for non-entry points
         // Only adds hash in build mode
         chunkFilename: '[name].bundle.js',
