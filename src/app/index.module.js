@@ -1,6 +1,5 @@
-import 'angular';
-import "angular-aria";
-import "angular-animate";
+'use strict';
+import angular from 'angular';
 import "@uirouter/angularjs";
 import "angular-material";
 import "angular-material/angular-material.scss";

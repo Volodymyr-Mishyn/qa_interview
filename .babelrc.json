@@ -1,0 +1,17 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "esmodules": true
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "angularjs-annotate",
+        "@babel/transform-runtime",
+        "@babel/plugin-proposal-class-properties"
+    ]
+}

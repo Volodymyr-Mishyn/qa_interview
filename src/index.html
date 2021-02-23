@@ -1,20 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app="testQA" ng-strict-di>
-<head>
-    <meta charset="utf-8">
-    <base href="/"/>
+  <head>
+    <meta charset="utf-8" />
+    <base href="/" />
     <title id="smt-title">Semantrum qa test</title>
-    <meta name="description" content="Semantrum media test">
-    <meta name="keywords" content="Monitoring,Media">
-    <meta name="viewport" content="width=device-width">
-</head>
-<body layout="column" layout-align="center center">
-
-<div layout="row" layout-align="start center" layout-fill id="inner-main-content"
-     style="position: relative;">
-    <div layout="column" layout-fill flex id="base_container">
-        <div ui-view layout="column" flex style="overflow: hidden;"></div>
+    <meta name="description" content="Semantrum media test" />
+    <meta name="keywords" content="Monitoring,Media" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <style>
+      .help-search-container {
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+          0 13px 19px 2px rgba(0, 0, 0, 0.14),
+          0 5px 24px 4px rgba(0, 0, 0, 0.12);
+        max-width: 100% !important;
+        width: 370px;
+      }
+    </style>
+  </head>
+  <body layout="column" layout-align="center center">
+    <div
+      layout="row"
+      layout-align="start center"
+      layout-fill
+      id="inner-main-content"
+      style="position: relative"
+    >
+      <div layout="column" layout-fill flex id="base_container">
+        <div ui-view layout="column" flex style="overflow: hidden"></div>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
