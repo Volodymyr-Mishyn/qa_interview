@@ -1,18 +1,20 @@
-export function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+import mainTemplate from './main/main.html';
+
+export function routerConfig($stateProvider, $urlRouterProvider,$locationProvider) {
     'ngInject';
-    //$locationProvider.hashPrefix(''); // by default '!'
-    //$locationProvider.html5Mode({enabled: true, requireBase: false});
+    $locationProvider.hashPrefix(''); // by default '!'
+
     $stateProvider
         .state('search', {
             url: '/',
-            templateUrl: './main/main.html',
+            template: mainTemplate,
             controller: 'MainController',
             controllerAs: 'main'
         });
     $urlRouterProvider.otherwise(($injector, $location) => {
         console.log('route:)');
-        let mainService = $injector.get('MainService');
-        // ID:counterBugRoute
+        const mainService = $injector.get('MainService');
+        // BUG_ID:counterBugRoute
         mainService.countCompleted+=2;
         return $location.path('/');
     });

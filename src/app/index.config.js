@@ -1,5 +1,5 @@
 
-export function config($logProvider, $mdDateLocaleProvider, $mdThemingProvider, localStorageServiceProvider) {
+export function config($logProvider, $mdThemingProvider, localStorageServiceProvider) {
     'ngInject';
     // Enable log
     $logProvider.debugEnabled(true);
@@ -48,14 +48,10 @@ export function config($logProvider, $mdDateLocaleProvider, $mdThemingProvider, 
             'hue-2': '900',
             'hue-3': 'A100'
         })
-       // .warnPalette('red')
         .accentPalette('orangePalette', {
             'default': '500',
             'hue-1': 'A200',
             'hue-2': 'A100',
             'hue-3': 'A400'
         });
-        // .backgroundPalette('grey', {
-        //     'default': '50'
-        // });
 }

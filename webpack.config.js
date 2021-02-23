@@ -1,16 +1,12 @@
-let path = require('path');
-let webpack = require('webpack');
-
-
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-let createWebpackConfiguration = () => {
-    let config = {};
-    config.entry = './src/index.module.js';
+const createWebpackConfiguration = () => {
+    const config = {};
+    config.entry = './src/app/index.module.js';
 
     config.output = {
         path: path.resolve(__dirname, 'dist'),
@@ -22,7 +18,8 @@ let createWebpackConfiguration = () => {
         filename: 'scripts/[name].bundle.js',
         // Filename for non-entry points
         // Only adds hash in build mode
-        chunkFilename: '[name].bundle.js'
+        chunkFilename: '[name].bundle.js',
+        sourceMapFilename: "[name].js.map"
     };
 
     /**
@@ -33,61 +30,44 @@ let createWebpackConfiguration = () => {
     };
 
     // javascript
-    let javaScriptRule = {
+    const javaScriptRule = {
         test: /\.js$/,
         exclude: path.resolve(__dirname, "node_modules")
     };
     // processed by webpack in reversed order
-    let javasScriptLoaders = [];
-    // ng-annotation: for proper dependency injection in AngularJs application
-    javasScriptLoaders.push({loader: 'ng-annotate-loader'});
+    const javasScriptLoaders = [];
     // babel es6->es5
     javasScriptLoaders.push({
         loader: 'babel-loader',
-        options: {
-            presets: ['env']
-        },
     });
     javasScriptLoaders.push({
-        loader: 'angularjs-template-loader'
+        loader: "eslint-loader",
+        options: {
+            emitWarning: true,
+        }
     });
-
-    // // ES-lint pushed last to be executed first
-    // javasScriptLoaders.push({
-    //     loader: "eslint-loader",
-    //     options: {
-    //         emitWarning: true,
-    //     }
-    // });
-
-    // javasScriptLoaders.push({
-    //     loader : './test-loader.js'
-    // });
     // use array of defined js loaders
     javaScriptRule.use = javasScriptLoaders;
 
-    let cssLoader = ['style-loader', 'css-loader', 'sass-loader'];
-    let cssRule = {
+    const cssRule = {
         test: /\.(s*)css$/,
-        use: cssLoader,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
     };
 
     // html
-    let htmlRule = {
+    const htmlRule = {
         test: /\.html$/,
-        use: ['raw-loader']
+        use: ['html-loader']
     };
 
     config.module.rules = [javaScriptRule, cssRule, htmlRule];
 
     config.plugins = [];
 
-    let htmlWebpackPlugin = new HtmlWebpackPlugin({
+    const htmlWebpackPlugin = new HtmlWebpackPlugin({
         template: './src/index.html',
         favicon: './src/assets/images/favicon.ico',
         inject: 'body',
-        // chunks: ['vendor', 'app'],
-        // chunksSortMode: 'manual'
     });
     config.plugins.push(htmlWebpackPlugin);
 
@@ -98,9 +78,8 @@ let createWebpackConfiguration = () => {
             chunkFilename: '[id].css',
         })
     );
-    // config.plugins.push(ExtractCSS);
 
-    let copyAssets = new CopyWebpackPlugin([
+    const copyAssets = new CopyWebpackPlugin([
         {from: 'src/assets', to: 'assets'},
     ]);
     config.plugins.push(copyAssets);
@@ -116,8 +95,8 @@ let createWebpackConfiguration = () => {
         port: 8011,
         host: '0.0.0.0'
     };
-
+    config.devtool = 'source-map';
+    
     return config;
 };
-const config = createWebpackConfiguration();
-module.exports = config;
+module.exports = createWebpackConfiguration();
