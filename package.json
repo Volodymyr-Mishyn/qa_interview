@@ -45,7 +45,7 @@
     "http-server": "^0.12.3",
     "mini-css-extract-plugin": "^0.9.0",
     "ng-annotate-loader": "^0.6.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "null-loader": "^3.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "phantomjs-prebuilt": "^2.1.16",
